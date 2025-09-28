@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Maged Samir Adly Youssef - Detailed Interactive CV</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --background-dark: #111827; --text-dark: #e5e7eb; --primary-dark: #3b82f6; --card-dark: #1f2937; --border-dark: #374151;
+            --background-light: #f3f4f6; --text-light: #111827; --primary-light: #2563eb; --card-light: #ffffff; --border-light: #e5e7eb;
+        }
+        html { scroll-behavior: smooth; }
+        body { font-family: 'Inter', sans-serif; transition: background-color 0.3s, color 0.3s; }
+        .dark body { background-color: var(--background-dark); color: var(--text-dark); }
+        .dark .bg-card { background-color: var(--card-dark); }
+        .dark .border-card { border-color: var(--border-dark); }
+        .dark .text-primary { color: var(--primary-dark); }
+        .dark .bg-primary { background-color: var(--primary-dark); }
+        .dark .nav-link.active { color: var(--primary-dark); border-left-color: var(--primary-dark); background-color: rgba(59, 130, 246, 0.1); }
+        .dark .timeline::before { background: var(--border-dark); }
+        .light body { background-color: var(--background-light); color: var(--text-light); }
+        .light .bg-card { background-color: var(--card-light); }
+        .light .border-card { border-color: var(--border-light); }
+        .light .text-primary { color: var(--primary-light); }
+        .light .bg-primary { background-color: var(--primary-light); }
+        .light .nav-link.active { color: var(--primary-light); border-left-color: var(--primary-light); background-color: rgba(37, 99, 235, 0.08); }
+        .light .timeline::before { background: var(--border-light); }
+        .section-title { font-size: 1.5rem; font-weight: 700; margin-bottom: 1.5rem; display: flex; align-items: center; }
+        .section-title i { margin-right: 0.75rem; width: 28px; text-align: center; }
+        .filter-btn { transition: all 0.2s; }
+        .filter-btn.active { background-color: var(--primary-dark); color: white; }
+        .light .filter-btn.active { background-color: var(--primary-light); }
+        details > summary { list-style: none; cursor: pointer; }
+        details > summary::-webkit-details-marker { display: none; }
+        details .icon-toggle::before { content: '\f078'; font-family: 'Font Awesome 6 Free'; font-weight: 900; transition: transform 0.3s; display: inline-block; }
+        details[open] .icon-toggle::before { transform: rotate(-180deg); }
+        .fade-in { animation: fadeIn 0.5s ease-in-out; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+    </style>
+</head>
+<body>
+
+    <div class="max-w-screen-2xl mx-auto flex flex-col lg:flex-row p-4 md:p-8 gap-8">
+        
+        <!-- Sidebar -->
+        <aside class="w-full lg:w-1/3 xl:w-1/4 lg:sticky top-8 self-start bg-card border border-card rounded-xl p-6 shadow-lg">
+            <div class="flex flex-col items-center">
+                <img class="w-32 h-32 rounded-full mb-4 border-4 border-primary object-cover" src="https://placehold.co/128x128/3b82f6/ffffff?text=MSY&font=inter" alt="Maged Samir Adly Youssef">
+                <h1 class="text-2xl font-bold text-center">Maged Samir Adly Youssef</h1>
+                <p class="text-primary text-center mt-1">QHSE Director | Senior Project Manager</p>
+            </div>
+
+            <div class="mt-8">
+                <h2 class="text-lg font-semibold mb-3 border-b border-card pb-2">Contact</h2>
+                <div class="space-y-3 text-sm">
+                    <a href="tel:+971502113073" class="flex items-center hover:text-primary transition-colors"><i class="fas fa-phone w-5 mr-3"></i>+971 50 211 3073</a>
+                    <a href="mailto:msadly@gmail.com" class="flex items-center hover:text-primary transition-colors"><i class="fas fa-envelope w-5 mr-3"></i>msadly@gmail.com</a>
+                    <a href="https://www.linkedin.com/in/msadly/" target="_blank" class="flex items-center hover:text-primary transition-colors"><i class="fab fa-linkedin w-5 mr-3"></i>linkedin.com/in/msadly</a>
+                    <p class="flex items-start"><i class="fas fa-map-marker-alt w-5 mr-3 mt-1"></i>Dubai, United Arab Emirates</p>
+                </div>
+            </div>
+
+            <nav class="mt-8">
+                <h2 class="text-lg font-semibold mb-3 border-b border-card pb-2">Navigation</h2>
+                <ul class="space-y-1" id="nav-menu">
+                    <li><a href="#summary" class="nav-link block p-2 rounded-lg hover:bg-gray-700/50 dark:hover:bg-gray-500/20 border-l-4 border-transparent transition-colors text-sm font-medium">Professional Summary</a></li>
+                    <li><a href="#experience" class="nav-link block p-2 rounded-lg hover:bg-gray-700/50 dark:hover:bg-gray-500/20 border-l-4 border-transparent transition-colors text-sm font-medium">Experience</a></li>
+                    <li><a href="#projects" class="nav-link block p-2 rounded-lg hover:bg-gray-700/50 dark:hover:bg-gray-500/20 border-l-4 border-transparent transition-colors text-sm font-medium">All Projects</a></li>
+                    <li><a href="#education" class="nav-link block p-2 rounded-lg hover:bg-gray-700/50 dark:hover:bg-gray-500/20 border-l-4 border-transparent transition-colors text-sm font-medium">Education</a></li>
+                    <li><a href="#certifications" class="nav-link block p-2 rounded-lg hover:bg-gray-700/50 dark:hover:bg-gray-500/20 border-l-4 border-transparent transition-colors text-sm font-medium">All Certifications</a></li>
+                    <li><a href="#skills" class="nav-link block p-2 rounded-lg hover:bg-gray-700/50 dark:hover:bg-gray-500/20 border-l-4 border-transparent transition-colors text-sm font-medium">Skills</a></li>
+                </ul>
+            </nav>
+            
+             <div class="mt-8">
+                <h2 class="text-lg font-semibold mb-3 border-b border-card pb-2">Affiliations</h2>
+                <div class="space-y-2 text-sm">
+                    <p><i class="fas fa-landmark w-5 mr-2 text-primary"></i>Syndicate of Engineers, Egypt</p>
+                    <p><i class="fas fa-hard-hat w-5 mr-2 text-primary"></i>Society Of Engineers, UAE</p>
+                    <p><i class="fas fa-clipboard-list w-5 mr-2 text-primary"></i>Project Management Institute (PMI)</p>
+                </div>
+            </div>
+
+            <div class="mt-8 flex justify-center">
+                <label for="theme-toggle" class="flex items-center cursor-pointer">
+                    <div class="relative">
+                        <input type="checkbox" id="theme-toggle" class="sr-only">
+                        <div class="block bg-gray-600 dark:bg-gray-700 w-14 h-8 rounded-full"></div>
+                        <div class="dot absolute left-1 top-1 bg-white w-6 h-6 rounded-full transition"></div>
+                    </div>
+                    <div class="ml-3 font-medium text-sm" id="theme-label">Dark Mode</div>
+                </label>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="w-full lg:w-2/3 xl:w-3/4">
+            <section id="summary" class="mb-12">
+                <h2 class="section-title text-primary"><i class="fas fa-user-tie"></i>Professional Summary</h2>
+                <p class="text-base leading-relaxed">
+                    Results-driven QHSE Director and Senior Project Manager with over 20 years of expertise in large-scale civil project execution across the Middle East. A proven leader in implementing and auditing ISO 9001, 14001, and 45001 standards, successfully managing portfolios exceeding $500M, and fostering safety-centric organizational cultures. Adept at stakeholder liaison, ERP system integration, and driving compliance. Combines PMP-certified project management with a Postgraduate Diploma in Contract Management to deliver projects that meet the highest standards of quality, safety, and commercial viability.
+                </p>
+            </section>
+
+            <section id="experience" class="mb-12">
+                <h2 class="section-title text-primary"><i class="fas fa-briefcase"></i>Professional Experience</h2>
+                <div class="relative timeline">
+                    <div class="absolute top-0 left-4 h-full w-0.5 bg-card"></div>
+                    <div class="space-y-8" id="experience-container">
+                        <!-- Experience items will be injected here -->
+                    </div>
+                </div>
+            </section>
+
+            <section id="projects" class="mb-12">
+                <h2 class="section-title text-primary"><i class="fas fa-project-diagram"></i>All Projects</h2>
+                <div class="flex flex-wrap gap-2 mb-6" id="project-filters">
+                    <button class="filter-btn active px-4 py-2 text-sm font-medium rounded-full bg-card border border-card" data-filter="all">All</button>
+                    <button class="filter-btn px-4 py-2 text-sm font-medium rounded-full bg-card border border-card" data-filter="Residential">Residential</button>
+                    <button class="filter-btn px-4 py-2 text-sm font-medium rounded-full bg-card border border-card" data-filter="Commercial">Commercial</button>
+                    <button class="filter-btn px-4 py-2 text-sm font-medium rounded-full bg-card border border-card" data-filter="Hospitality">Hospitality</button>
+                    <button class="filter-btn px-4 py-2 text-sm font-medium rounded-full bg-card border border-card" data-filter="Infrastructure">Infrastructure</button>
+                    <button class="filter-btn px-4 py-2 text-sm font-medium rounded-full bg-card border border-card" data-filter="Public Works">Public Works</button>
+                    <button class="filter-btn px-4 py-2 text-sm font-medium rounded-full bg-card border border-card" data-filter="Sports Facilities">Sports Facilities</button>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6" id="project-grid">
+                    <!-- Project cards will be injected here -->
+                </div>
+            </section>
+
+            <section id="education" class="mb-12">
+                <h2 class="section-title text-primary"><i class="fas fa-graduation-cap"></i>Education & Diplomas</h2>
+                <div class="space-y-6">
+                     <div class="bg-card p-6 rounded-lg shadow-md border border-card">
+                        <p class="text-sm text-primary font-semibold">2022</p>
+                        <h3 class="text-xl font-bold">Post Graduate Diploma in Contract Management & Administration</h3>
+                        <p class="font-medium">The American University in Cairo, Egypt</p>
+                        <p class="mt-2 text-sm font-bold text-green-400 dark:text-green-500">GPA: 4.0 / 4.0 (Excellent)</p>
+                    </div>
+                    <div class="bg-card p-6 rounded-lg shadow-md border border-card">
+                        <p class="text-sm text-primary font-semibold">2023</p>
+                        <h3 class="text-xl font-bold">OTHM Level 6 Diploma in Occupational Health and Safety</h3>
+                        <p class="font-medium">OTHM Qualifications, UK (EQF Level 6)</p>
+                    </div>
+                    <div class="bg-card p-6 rounded-lg shadow-md border border-card">
+                        <p class="text-sm text-primary font-semibold">2004</p>
+                        <h3 class="text-xl font-bold">Bachelor of Science (B.Sc.), Civil Engineering</h3>
+                        <p class="font-medium">Alexandria University, Egypt</p>
+                    </div>
+                </div>
+            </section>
+
+            <section id="certifications" class="mb-12">
+                <h2 class="section-title text-primary"><i class="fas fa-certificate"></i>All Certifications & Credentials</h2>
+                <div class="flex flex-wrap gap-2 mb-6" id="cert-filters">
+                     <button class="filter-btn active px-4 py-2 text-sm font-medium rounded-full bg-card border border-card" data-filter="all">All</button>
+                     <button class="filter-btn px-4 py-2 text-sm font-medium rounded-full bg-card border border-card" data-filter="QHSE">QHSE Systems</button>
+                     <button class="filter-btn px-4 py-2 text-sm font-medium rounded-full bg-card border border-card" data-filter="PM">Project Management</button>
+                     <button class="filter-btn px-4 py-2 text-sm font-medium rounded-full bg-card border border-card" data-filter="Safety">Safety</button>
+                     <button class="filter-btn px-4 py-2 text-sm font-medium rounded-full bg-card border border-card" data-filter="Sustainability">Sustainability</button>
+                     <button class="filter-btn px-4 py-2 text-sm font-medium rounded-full bg-card border border-card" data-filter="IT">IT</button>
+                     <button class="filter-btn px-4 py-2 text-sm font-medium rounded-full bg-card border border-card" data-filter="CPD">Development</button>
+                     <button class="filter-btn px-4 py-2 text-sm font-medium rounded-full bg-card border border-card" data-filter="Official">Official</button>
+                </div>
+                <div class="space-y-4 text-sm" id="cert-list">
+                    <!-- Cert items will be injected here -->
+                </div>
+            </section>
+            
+            <section id="skills">
+                <h2 class="section-title text-primary"><i class="fas fa-tools"></i>Skills & Competencies</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div>
+                        <h3 class="text-lg font-bold mb-3">Core Competencies</h3>
+                        <div class="flex flex-wrap gap-2">
+                             <span class="bg-primary text-white px-3 py-1 rounded-full text-xs font-medium">QHSE Leadership & Strategy</span>
+                             <span class="bg-primary text-white px-3 py-1 rounded-full text-xs font-medium">Project Management (PMP)</span>
+                             <span class="bg-primary text-white px-3 py-1 rounded-full text-xs font-medium">Contract Management (FIDIC)</span>
+                             <span class="bg-primary text-white px-3 py-1 rounded-full text-xs font-medium">ISO 9001/14001/45001</span>
+                             <span class="bg-primary text-white px-3 py-1 rounded-full text-xs font-medium">Risk Assessment & Mitigation</span>
+                             <span class="bg-primary text-white px-3 py-1 rounded-full text-xs font-medium">Lead & Internal Auditing</span>
+                             <span class="bg-primary text-white px-3 py-1 rounded-full text-xs font-medium">Dispute Resolution (ADR)</span>
+                             <span class="bg-primary text-white px-3 py-1 rounded-full text-xs font-medium">Stakeholder Management</span>
+                             <span class="bg-primary text-white px-3 py-1 rounded-full text-xs font-medium">NEBOSH & IOSH Standards</span>
+                        </div>
+                    </div>
+                    <div>
+                        <h3 class="text-lg font-bold mb-3">Technical & Software Skills</h3>
+                         <div class="flex flex-wrap gap-2">
+                            <span class="bg-gray-600 dark:bg-gray-700 text-white px-3 py-1 rounded-full text-xs font-medium">Oracle Fusion Cloud ERP</span>
+                            <span class="bg-gray-600 dark:bg-gray-700 text-white px-3 py-1 rounded-full text-xs font-medium">Aconex</span>
+                            <span class="bg-gray-600 dark:bg-gray-700 text-white px-3 py-1 rounded-full text-xs font-medium">Primavera P3</span>
+                            <span class="bg-gray-600 dark:bg-gray-700 text-white px-3 py-1 rounded-full text-xs font-medium">AutoCAD</span>
+                            <span class="bg-gray-600 dark:bg-gray-700 text-white px-3 py-1 rounded-full text-xs font-medium">Microsoft Office Suite</span>
+                            <span class="bg-gray-600 dark:bg-gray-700 text-white px-3 py-1 rounded-full text-xs font-medium">PROKON</span>
+                            <span class="bg-gray-600 dark:bg-gray-700 text-white px-3 py-1 rounded-full text-xs font-medium">SAP 2000</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+        </main>
+    </div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        // --- DATA ---
+        const experiences = [
+            { period: "Apr 2022 - Present", title: "QHSE Director", company: "Delta Al Emarate Contracting LLC (Bin Odah Holding)", icon: "fa-building", duties: ["Develop, implement, and monitor the Integrated Management System (IMS) for the company, serving as the Management Representative.", "Oversee day-to-day operations of the QHSE Department.", "Lead development of QHSE policies, procedures, and systems aligned with business objectives.", "Establish short and long-term operating and financial objectives for the QHSE Department.", "Provide support in project proposal preparation, project reviews, and client interactions.", "Monitor and measure QHSE Department activities, including ISO compliance, audit programs, and NCR closures.", "Manage and coordinate the ERP system implementation and establish workflows for all departments.", "Actively promote a strong HSE culture across the organization."] },
+            { period: "Oct 2020 - Dec 2023", title: "Managing Director & COO", company: "ExpertZ ISO (VISION INTERNATIONAL)", icon: "fa-handshake", duties: ["Established and led an organizational structuring and ISO certification consultancy.", "Served as the certification body and local representative for Vision International, accredited by ASCB (England).", "Acted as Senior Lead Auditor for ISO 9001, 14001, 45001, and 27001.", "Delivered consultancy for ISO 9001, 14001, 45001, 27001, 22000, and HACCP.", "Key Achievement: Secured 50+ clients in 2 years across UAE, Oman, and Africa."] },
+            { period: "Dec 2014 - Feb 2022", title: "QHSE Manager / Close-out Manager & Head of ADR", company: "Ghantoot Group", icon: "fa-road", duties: ["Developed and implemented QHSE management systems in line with ISO 9001, 14001, and OHSAS 18001.", "Served as the primary point of contact for all QHSE matters.", "Developed project Quality Plans and conducted HSE risk assessments (HAZID, ENVID).", "As Head of ADR & Legal Team, handled all legal issues with suppliers/subcontractors, coordinated with law firms, and prepared Statements of Defence for Arbitration Tribunals.", "Managed Defects Liability Periods (DLPs) and maintenance works for project close-outs."] },
+            { period: "Mar 2008 - Nov 2014", title: "Projects QA/QC Manager & Project Manager", company: "Mammut Contracting L.L.C.", icon: "fa-cogs", duties: ["Ensured the establishment, implementation, and maintenance of the Quality Management System (QMS).", "Acted as Management Representative for ISO 9001.", "Conducted internal audits across all departments for ISO 9001, 14001, and OHSAS 18001.", "Prepared Project Quality Management Plans (PQP) and established Quality Control Procedures.", "Later served as Head of Maintenance Department, supervising all maintenance processes, managing budgets, and implementing preventive maintenance programs."] },
+            { period: "Feb 2006 - Mar 2008", title: "Senior QA/QC Engineer", company: "Al-Habtoor Engineering Enterprises L.L.C.", icon: "fa-city", duties: ["Conducted audits to ensure compliance with HEE's QMS and ISO 9001-2000.", "Prepared and updated Project Quality Plans (PQP), Method Statements, and QCPs.", "Led the QC team for monitoring Curtain Wall Specialist sub-contractor across 11 high-rise towers.", "Inspected all sub-structural, super-structural, and finishing activities on site.", "Issued and followed up on Quality Observation Reports (QORs) and Non-Conformance Reports (NCRs)."] },
+            { period: "Jul 2004 - Dec 2005", title: "Project Engineer / Civil QA/QC Engineer", company: "Murray & Roberts International Limited", icon: "fa-hard-hat", duties: ["Responsible for quality inspection of structural concrete, aluminium works, and GRC on the San Stefano Grand Plaza project.", "Managed time schedules for aluminium works and followed up on site instructions.", "Led a team of 36 laborers for concrete and plaster repairs.", "Praised by Project Director as a 'fast runner' for taking initiative and responsibility from day one."] }
+        ];
+
+        const projects = [
+            { name: "Deira Waterfront Development (Ph 1)", client: "ITHRA DUBAI", value: "AED 880M", category: "Commercial", consultant: "DAR DESIGN" },
+            { name: "The Executive Towers (11 High-Rises)", client: "Dubai Properties LLC", value: "AED 2B", category: "Residential", consultant: "DAR Consultant LLC" },
+            { name: "Meydan Business Park (Stage 1)", client: "MEYDAN LLC", value: "AED 1.56B", category: "Commercial", consultant: "TAK Design" },
+            { name: "Dhofar Beach Resorts & Spa - Salalah", client: "Taameer Investments", value: "OMR 55M", category: "Hospitality", consultant: "Hill International / SSHI" },
+            { name: "DAMAC Lagoons (Nice 2 & 3)", client: "DAMAC", value: "AED 328M", category: "Residential", consultant: "BH.NS Engineering" },
+            { name: "Urban Oasis Tower (B+G+3P+34+R)", client: "DAR AL ARKAN", value: "AED 220M", category: "Residential", consultant: "LACASA" },
+            { name: "457 Villas at DAMAC Hills 1", client: "DAMAC", value: "AED 238M", category: "Residential", consultant: "ARIF & BINTOAK" },
+            { name: "Seascape at Mina Rashid", client: "EMAAR", value: "AED 306.65M", category: "Residential", consultant: "XArchitects / MIRAGE" },
+            { name: "The Wave Plaza Hotel (Mysk by Shaza)", client: "Taameer Investments", value: "OMR 15.6M", category: "Hospitality", consultant: "Hill Int. / KEO" },
+            { name: "Headquarters for CSEPF, Muscat", client: "CSEPF", value: "OMR 16.8M", category: "Public Works", consultant: "Al Manarah Eng." },
+            { name: "San-Stefano Grand Plaza Complex", client: "Talaat Moustafa Group (TMG)", value: "USD 550M", category: "Hospitality", consultant: "Dar Al-Handasah" },
+            { name: "DEWA Central Warehouses", client: "DEWA", value: "AED 75M", category: "Infrastructure", consultant: "A&Z Arch. Eng." },
+            { name: "Al Ain Equestrian Club", client: "Al Ain Equestrian Club", value: "AED 70M", category: "Sports Facilities", consultant: "Al Torath Eng." },
+            { name: "DEWA Control Centres (DCC & TCC)", client: "DEWA", value: "AED 78M", category: "Infrastructure", consultant: "ArchDome" },
+            { name: "IRIS BAY", client: "Dubai Properties LLC", value: "AED 280M", category: "Commercial", consultant: "DAR Consultant LLC" },
+            { name: "Al-Ruwad International School", client: "Al Ruwad Int. School", value: "OMR 2.3M", category: "Public Works", consultant: "Munamir Design" },
+            { name: "Mall Of Oman Primary Substation", client: "MEDC", value: "OMR 1.7M", category: "Infrastructure", consultant: "MEDC" },
+            { name: "Living Legends (3 Residential Bldgs)", client: "Dawn Real Estate", value: "AED 240M", category: "Residential", consultant: "Adnan Saffarini" }
+        ];
+        
+        const certifications = [
+            { name: "Integrated Management System Lead Auditor (ISO 9001, 14001, 45001)", body: "LRQA", date: "2023", category: "QHSE", icon: "fa-check-double" },
+            { name: "Project Management Professional (PMP)", body: "PMI", date: "2025", category: "PM", icon: "fa-tasks" },
+            { name: "NEBOSH International General Certificate", body: "NEBOSH", date: "2016", category: "Safety", icon: "fa-hard-hat" },
+            { name: "OTHM Level 6 Diploma in Occupational Health and Safety", body: "OTHM Qualifications", date: "2023", category: "Safety", icon: "fa-award" },
+            { name: "IOSH Managing Safely", body: "IOSH", date: "2016", category: "Safety", icon: "fa-shield-alt" },
+            { name: "LEED Green Associate", body: "U.S. Green Building Council (USGBC)", date: "2016", category: "Sustainability", icon: "fa-leaf" },
+            { name: "Integrated Management System Internal Auditor (ISO 9001, 14001, 45001)", body: "LRQA", date: "2023", category: "QHSE", icon: "fa-clipboard-check" },
+            { name: "Integrated Management System Internal Auditor (ISO 9001, 14001, OHSAS 18001)", body: "SGS", date: "2018", category: "QHSE", icon: "fa-clipboard-check" },
+            { name: "Internal Auditor - ISO 14001 & OHSAS 18001", body: "TÜV SÜD", date: "2008", category: "QHSE", icon: "fa-clipboard-check" },
+            { name: "Internal Auditor - ISO 9001", body: "TÜV SÜD", date: "2008", category: "QHSE", icon: "fa-clipboard-check" },
+            { name: "OSHA Construction Industry Safety & Health Standard (30-hr)", body: "OSHA Outreach Trainer", date: "2005", category: "Safety", icon: "fa-plus-square" },
+            { name: "First Aid Training", body: "Jabal Dami Training Institute", date: "2016", category: "Safety", icon: "fa-first-aid" },
+            { name: "CompTIA A+ Certified Service Technician", body: "CompTIA", date: "2000", category: "IT", icon: "fa-laptop-code" },
+            { name: "Academic Qualification Equivalency", body: "UAE Ministry of Education", date: "2024", category: "Official", icon: "fa-stamp" },
+            { name: "Egyptian Engineers Syndicate Membership", body: "Syndicate of Engineers", date: "2027", category: "Official", icon: "fa-landmark" },
+            { name: "Society of Engineers - UAE Membership", body: "Society of Engineers - UAE", date: "2014", category: "Official", icon: "fa-hard-hat" },
+            { name: "Trakhees Accreditation (Green & Blue Code)", body: "Trakhees - Dubai", date: "2012", category: "Official", icon: "fa-id-card" },
+            { name: "Webinar: Apply ISO 45002:2023", body: "LRQA", date: "2023", category: "CPD", icon: "fa-chalkboard-teacher" },
+            { name: "Webinar: ISO 14001 Life Cycle Perspective", body: "LRQA", date: "2023", category: "CPD", icon: "fa-chalkboard-teacher" },
+            { name: "Webinar: ISO 45001 Identifying Risks", body: "LRQA", date: "2025", category: "CPD", icon: "fa-chalkboard-teacher" },
+            { name: "Big 5 Global Leaders' Summit", body: "Big 5 Global", date: "2023", category: "CPD", icon: "fa-globe" },
+            { name: "PMP Preparation Course (35 PDUs)", body: "PM TRICKS", date: "2025", category: "PM", icon: "fa-tasks" }
+        ];
+
+        // --- RENDER FUNCTIONS ---
+        const experienceContainer = document.getElementById('experience-container');
+        function renderExperience() {
+            experienceContainer.innerHTML = '';
+            experiences.forEach(exp => {
+                const item = document.createElement('div');
+                item.className = 'pl-10 relative experience-item';
+                const dutiesList = exp.duties.map(d => `<li class="text-sm">${d}</li>`).join('');
+                item.innerHTML = `
+                    <div class="absolute top-0 left-0 w-8 h-8 rounded-full bg-primary flex items-center justify-center text-white text-sm"><i class="fas ${exp.icon}"></i></div>
+                    <div class="bg-card p-4 md:p-6 rounded-lg shadow-md border border-card">
+                        <p class="text-sm text-primary font-semibold">${exp.period}</p>
+                        <details>
+                            <summary class="flex justify-between items-center">
+                                <div>
+                                    <h3 class="text-lg md:text-xl font-bold mt-1">${exp.title}</h3>
+                                    <p class="font-medium text-sm">${exp.company}</p>
+                                </div>
+                                <span class="text-primary text-xs ml-2 icon-toggle"></span>
+                            </summary>
+                            <div class="mt-4 border-t border-card pt-4">
+                                <ul class="list-disc list-inside space-y-2 text-gray-400 dark:text-gray-300">${dutiesList}</ul>
+                            </div>
+                        </details>
+                    </div>`;
+                experienceContainer.appendChild(item);
+            });
+        }
+
+        const projectGrid = document.getElementById('project-grid');
+        function renderProjects(filter = 'all') {
+            projectGrid.innerHTML = '';
+            const filteredProjects = filter === 'all' ? projects : projects.filter(p => p.category === filter);
+            filteredProjects.forEach(p => {
+                const card = document.createElement('div');
+                card.className = 'bg-card p-4 rounded-lg shadow-md border border-card project-card fade-in flex flex-col justify-between';
+                card.dataset.category = p.category;
+                card.innerHTML = `
+                    <div>
+                        <h4 class="font-bold text-md text-primary">${p.name}</h4>
+                        <p class="text-xs font-semibold mb-2">${p.value}</p>
+                        <p class="text-xs italic text-gray-500 dark:text-gray-400">Client: ${p.client}</p>
+                        <p class="text-xs italic text-gray-500 dark:text-gray-400">Consultant: ${p.consultant}</p>
+                    </div>
+                `;
+                projectGrid.appendChild(card);
+            });
+        }
+
+        const certList = document.getElementById('cert-list');
+        function renderCerts(filter = 'all') {
+            certList.innerHTML = '';
+            const filteredCerts = filter === 'all' ? certifications : certifications.filter(c => c.category === filter);
+            filteredCerts.forEach(c => {
+                 const item = document.createElement('div');
+                 item.className = 'bg-card p-3 rounded-lg flex items-center border border-card cert-item fade-in';
+                 item.dataset.category = c.category;
+                 item.innerHTML = `
+                    <i class="fas ${c.icon} text-primary text-xl w-8 text-center mr-4"></i>
+                    <div class="flex-grow">
+                        <p class="font-semibold">${c.name}</p>
+                        <p class="text-xs text-gray-500 dark:text-gray-400">${c.body}</p>
+                    </div>
+                    <span class="text-xs font-bold text-primary ml-4">${c.date}</span>
+                 `;
+                 certList.appendChild(item);
+            });
+        }
+
+        function setupFilter(filterContainerId, renderFunction) {
+            const filterContainer = document.getElementById(filterContainerId);
+            if (!filterContainer) return;
+            filterContainer.addEventListener('click', (e) => {
+                if (e.target.tagName === 'BUTTON') {
+                    filterContainer.querySelector('.active').classList.remove('active');
+                    e.target.classList.add('active');
+                    renderFunction(e.target.dataset.filter);
+                }
+            });
+        }
+
+        setupFilter('project-filters', renderProjects);
+        setupFilter('cert-filters', renderCerts);
+        
+        // --- THEME SWITCHER ---
+        const themeToggle = document.getElementById('theme-toggle');
+        const themeLabel = document.getElementById('theme-label');
+        const html = document.documentElement;
+        const applyTheme = (isDark) => {
+            html.classList.toggle('dark', isDark);
+            html.classList.toggle('light', !isDark);
+            themeLabel.textContent = isDark ? 'Dark Mode' : 'Light Mode';
+            themeToggle.checked = !isDark;
+        };
+        const savedTheme = localStorage.getItem('theme');
+        applyTheme(savedTheme !== 'light');
+        themeToggle.addEventListener('change', () => {
+            const isLight = themeToggle.checked;
+            localStorage.setItem('theme', isLight ? 'light' : 'dark');
+            applyTheme(!isLight);
+        });
+
+        // --- SCROLLSPY for NAV ---
+        const sections = document.querySelectorAll('main section');
+        const navLinks = document.querySelectorAll('.nav-link');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    navLinks.forEach(link => {
+                        link.classList.remove('active');
+                        if (link.getAttribute('href').substring(1) === entry.target.id) {
+                            link.classList.add('active');
+                        }
+                    });
+                }
+            });
+        }, { rootMargin: '-40% 0px -60% 0px' });
+        sections.forEach(section => observer.observe(section));
+
+        // --- INITIAL RENDER ---
+        renderExperience();
+        renderProjects();
+        renderCerts();
+    });
+</script>
+
+</body>
+</html>
+
+
